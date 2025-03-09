@@ -1,0 +1,72 @@
+﻿@page "/Register"
+@inherits RegisterBase
+<Header ></Header>
+<div class="d-flex justify-content-center align-items-center min-vh-100 bg-light">
+    <div class="w-100" style="max-width: 600px;">
+        <div class="card p-4 shadow-sm">
+            <h2 class="text-2xl font-semibold text-center text-gray-700">Create Account</h2>
+            <p class="text-sm text-center text-gray-500 mb-6">Sign up to get started</p>
+
+            <EditForm Model="@registerDto" OnValidSubmit="RegisterAsync">
+                <DataAnnotationsValidator />
+                <ValidationSummary />
+
+                <!-- Row with two columns -->
+                <div class="row">
+                    <!-- Column 1: Email and Password -->
+                    <div class="col-md-6">
+                        <div class="mb-4">
+                            <label class="block text-sm font-medium text-gray-600">Email</label>
+                            <InputText class="form-control form-control-sm" type="email" @bind-Value="registerDto.Email" />
+                        </div>
+
+                        <div class="mb-4">
+                            <label class="block text-sm font-medium text-gray-600">Password</label>
+                            <InputText class="form-control form-control-sm" type="password" @bind-Value="registerDto.Password" />
+                        </div>
+                    </div>
+
+                    <!-- Column 2: Confirm Password and Role -->
+                    <div class="col-md-6">
+                        <div class="mb-4">
+                            <label class="block text-sm font-medium text-gray-600">Confirm Password</label>
+                            <InputText class="form-control form-control-sm" type="password" @bind-Value="registerDto.ConfirmPassword" />
+                        </div>
+
+                        <div class="mb-4">
+                            <label class="block text-sm font-medium text-gray-600">Role</label>
+                            <select class="form-control form-control-sm" @bind="registerDto.Role">
+                                <option value="">Select Role</option>
+                                <option value="Admin">Admin</option>
+                                <option value="User">User</option>
+                                <option value="Manager">Manager</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-block mt-4 w-100 h-75" disabled="@isLoading">
+                    @if (isLoading)
+                    {
+                        <span>Creating Account...</span>
+                    }
+                    else
+                    {
+                        <span>Register</span>
+                    }
+                </button>
+            </EditForm>
+
+            @if (registerError)
+            {
+                <div class="mt-4 text-center text-danger">
+                    There was an error with the registration. Please try again.
+                </div>
+            }
+
+            <div class="mt-4 text-center">
+                <a href="/login" class="text-sm text-primary">Already have an account? Login</a>
+            </div>
+        </div>
+    </div>
+</div>

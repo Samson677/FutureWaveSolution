@@ -1,0 +1,31 @@
+﻿@page "/Products"
+@inherits ProductsBase
+<Header></Header>
+
+@if (Products == null)
+{
+    <h2>Loading...</h2>
+}
+else
+{
+    <div class="item-container">
+        @foreach (var product in Products)
+        {
+            <div class="item">
+                <div class="item-image">
+                    <img src="@GetImageSrc(product.Image)" alt="@product.Name" />
+                </div>
+                <div class="item-name">@product.Name</div>
+                <div class="item-desc">@product.Description</div>
+                <div class="item-qty">Remaining: @product.Qty</div>
+                <div class="item-price">K @product.Price</div>
+                <div class="item-cart">
+                    <img src="/Images/cart.png" alt="Cart" />
+                </div>
+            </div>
+        }
+    </div>
+}
+<Footer></Footer>
+
+

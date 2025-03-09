@@ -1,0 +1,105 @@
+﻿body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Ensure the body takes up the full height of the viewport */
+    margin: 0; /* Remove body margin */
+}
+
+.footer {
+    display: flex;
+    background-color: rgb(38, 78, 100);
+    height: 300px;
+    width: 100%; /* Ensure the footer spans the entire width */
+    padding-top: 30px;
+    justify-content: space-between;
+    box-sizing: border-box; /* Ensure padding doesn't affect width */
+}
+
+.services {
+    display: flex;
+    flex-direction: column;
+    color: white;
+    font-size: 15px;
+}
+
+.service-list {
+    padding-left: 35px;
+    font-family: 'Segoe UI Symbol';
+    font-weight: bold;
+}
+
+.services ul {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    line-height: 30px;
+    list-style: none;
+    text-decoration: none;
+}
+
+.contact {
+    padding-left: 50px;
+    color: white;
+}
+
+.about {
+    padding-left: 60px;
+    color: white;
+}
+
+.about-list {
+    padding-left: 32px;
+}
+
+.about ul {
+    list-style: none;
+    text-decoration: none;
+    line-height: 30px;
+}
+
+.sign-up {
+    padding-left: 50px;
+    padding-top: 20px;
+    padding-right: 30px;
+}
+
+.offer {
+    color: orange;
+}
+
+.copy-right {
+    padding-top: 10px;
+    padding-left: 30px;
+}
+
+.social-media {
+    padding-top: 40px;
+}
+
+    .social-media img {
+        width: 32px;
+        height: 32px;
+    }
+
+.social-media-icons {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-right: 30px;
+}
+
+.sign-up-btn {
+    background-color: rgb(21, 84, 11);
+    padding: 0px 10px 0px 10px;
+    color: white;
+    height: 36px;
+    width: 100px;
+    background-color: rgb(101, 194, 12);
+    border: 1px solid white;
+    border-radius: 15px;
+    transition: background-color 0.1s ease;
+}
+
+    .sign-up-btn:hover {
+        background-color: rgb(114, 169, 56);
+    }

@@ -1,0 +1,75 @@
+﻿
+
+@inherits LoginBase
+
+<div class="footer">
+    <div class="services">
+        <div class="service-list"><p>SERVICES</p></div>
+        <ul>
+            <li>Projects Ideas</li>
+            <li>Project Building</li>
+            <li>Consultations</li>
+            <li>Selling Components</li>
+
+        </ul>
+        <div class="copy-right">
+            <p>&copy; @(DateTime.Now.Year) Future Wave Electronics. All rights reserved.</p>
+        </div>
+    </div>
+    <div class="contact">
+        <div class="contact-list"><p>CONTACT US</p></div>
+        <div class="address"><p>Address: 2569, Luangwa-way <br /> Parklands, Kitwe.</p></div>
+        <ul>
+            <li>MTN: +260964054627</li>
+            <li>AIRTEL: +260973110908</li>
+            <li>ZAMTEL: +260955709539</li>
+        </ul>
+
+
+    </div>
+    <div class="about">
+        <div class="about-list"><p>ABOUT US</p></div>
+        <ul>
+            <li>Company Overview</li>
+            <li>Our Mission</li>
+            <li>Core Values</li>
+        </ul>
+
+    </div>
+    <div class="sign-up">
+        <div class="offer"><p>Sign up and get 10% OFF on your first purchase!</p></div>
+        <EditForm Model="@loginDto">
+            <InputText @bind-Value="loginDto.Email" placeholder="Your Email A ddress" class="input-field"></InputText>
+            <button class="sign-up-btn" type="submit">Sign Up</button>
+        </EditForm>
+
+        <div class="social-media">
+            <div class="social-media-icons">
+                <img src="/Images/facebook.png" />
+
+                <img src="/Images/whatsapp.png" />
+            </div>
+
+
+
+        </div>
+
+    </div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+@code {
+
+}

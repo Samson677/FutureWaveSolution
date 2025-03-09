@@ -1,0 +1,87 @@
+﻿@page "/AddProduct"
+@inherits AddProductBase
+<Header></Header>
+
+<div class="d-flex justify-content-center align-items-center min-vh-100 bg-light">
+    <div class="w-100" style="max-width: 700px;">
+        <div class="card p-4 shadow-sm">
+            <h2 class="text-2xl font-semibold text-center text-gray-700">Add New Product</h2>
+            <p class="text-sm text-center text-gray-500 mb-4">Fill in the details to add a new product</p>
+
+            <EditForm Model="@productDto" OnValidSubmit="AddProductAsync">
+                <DataAnnotationsValidator />
+                <ValidationSummary />
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label class="form-label">Product Name</label>
+                            <InputText class="form-control form-control-sm" @bind-Value="productDto.Name" />
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label class="form-label">Price</label>
+                            <InputNumber class="form-control form-control-sm" @bind-Value="productDto.Price" />
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label class="form-label">Quantity</label>
+                            <InputNumber class="form-control form-control-sm" @bind-Value="productDto.Qty" />
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label class="form-label">Category</label>
+                            <InputText class="form-control form-control-sm" @bind-Value="productDto.CategoryName" />
+                        </div>
+                    </div>
+
+                    <div class="col-md-12">
+                        <div class="mb-3">
+                            <label class="form-label">Description</label>
+                            <InputTextArea class="form-control form-control-sm" @bind-Value="productDto.Description" />
+                        </div>
+                    </div>
+
+                    <div class="col-md-12">
+                        <div class="mb-3">
+                            <label class="form-label">Product Image</label>
+                            <InputFile class="form-control form-control-sm" OnChange="OnFileChange" />
+                        </div>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-block mt-3 w-100 h-75" disabled="@isLoading">
+                    @if (isLoading)
+                    {
+                        <span>Adding Product...</span>
+                    }
+                    else
+                    {
+                        <span>Add Product</span>
+                    }
+                </button>
+            </EditForm>
+
+            @if (isSucess)
+            {
+                <div class="mt-3 text-center text-success">
+                    Product added successfully!
+                </div>
+            }
+
+            @if (productError)
+            {
+                <div class="mt-3 text-center text-danger">
+                    There was an error adding the product. Please try again.
+                </div>
+            }
+
+        </div>
+    </div>
+</div>
