@@ -1,8 +1,10 @@
 ﻿using FutureWave.Models.Dtos;
+using FutureWave.Models.Dtos.FutureWave.Models.Dtos;
 using FutureWave.Web.Services;
 using FutureWave.Web.Services.Contracts;
 using FutureWave.Web.SharedServices;
 using Microsoft.AspNetCore.Components;
+using Microsoft.Win32.SafeHandles;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,8 +23,9 @@ namespace FutureWave.Web.Pages
         public bool isSuccess { get; set; } = false;
         public string ErrorMessage { get; set; } = string.Empty;
         private decimal _selectedPriceRange = 0;
+        public decimal SelectedPriceRange { get; set; }
         private string? _selectedProduct;
-        public string ItemSelected { get; set; }
+        public string SelectedProduct { get; set; }
         public IEnumerable<ProductDto>? FilteredProduct => products?.Where(p =>
         (string.IsNullOrEmpty(_selectedProduct) || p.Name == _selectedProduct) &&
         (_selectedPriceRange == 0 || p.Price <= _selectedPriceRange));
@@ -110,12 +113,39 @@ namespace FutureWave.Web.Pages
 
         protected void SelectedRange(decimal range)
         {
-            _selectedPriceRange = range;
+            _selectedPriceRange = SelectedPriceRange = range;
         }
         protected void SelectedItem(string name)
         {
-            _selectedProduct = ItemSelected = name;
+            _selectedProduct = SelectedProduct = name;
 
+        }
+        protected void ClearSelection()
+        {
+
+            _selectedProduct = SelectedProduct = null;
+
+        }
+
+        protected void ClearPriceSelection()
+        {
+
+            _selectedPriceRange = SelectedPriceRange = 0;
+
+        }
+
+        protected void HandleInput(ChangeEventArgs e)
+        {
+            var _input = (string)e.Value;
+            if (_input is not null)
+            {
+                _selectedProduct = string.IsNullOrEmpty(_input) ? string.Empty : products.Where(p => p.Name.StartsWith(_input, StringComparison.OrdinalIgnoreCase))
+                                   .Select(p => p.Name).FirstOrDefault() ?? string.Empty;
+            }
+            else
+            {
+                _selectedProduct = SelectedProduct = null;
+            }
         }
     }
 }
