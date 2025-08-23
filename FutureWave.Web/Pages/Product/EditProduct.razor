@@ -3,22 +3,22 @@
 
 <div class="d-flex justify-content-center align-items-center max-vh-100 mt-5">
 
-<div class="w-100 bg-light p-5" style="max-width: 700px">
+    <div class="w-100 bg-light p-5" style="max-width: 700px">
 
-  <h2 class="text-2xl text-center text-gray-700">Edit Product</h2>
-  <p class="text-sm-center text-gray-700 ">Fill in the details</p>
+        <h2 class="text-2xl text-center text-gray-700">Edit Product</h2>
+        <p class="text-sm-center text-gray-700 ">Fill in the details</p>
 
-  <EditForm  Model="@ProductToEdit"  OnvalidSubmit="SaveAsync" >
+        <EditForm Model="@ProductToEdit" OnvalidSubmit="SaveAsync">
             <DataAnnotationsValidator></DataAnnotationsValidator>
             <ValidationSummary></ValidationSummary>
- <div class="row">
+            <div class="row">
 
-<div class="col-md-6">
-    <div class="mb-3">
-        <label class="form-label"> Product Name</label>
+                <div class="col-md-6">
+                    <div class="mb-3">
+                        <label class="form-label"> Product Name</label>
                         <InputText class="form-control form-control-sm" @bind-value="ProductToEdit.Name"></InputText>
-    </div>
-</div>
+                    </div>
+                </div>
 
                 <div class="col-md-6">
                     <div class="mb-3">
@@ -46,36 +46,17 @@
                 </div>
                 <div class="col-md-6">
                     <div class="mt-5 mb-3">
-                       
+
                         <button type="submit" class="btn btn-primary w-100">Save</button>
                     </div>
                 </div>
 
+            </div>
 
 
 
+        </EditForm>
 
-
-
-
-
-
-
- </div>
-
-
-
-  </EditForm>
-
-
-
-
-</div>
-
-
-
-
-
-
+    </div>
 
 </div>

@@ -22,20 +22,10 @@ namespace FutureWave.Web.Pages
         public string ErrorMessage { get; set; } = string.Empty;
         private decimal _selectedPriceRange = 0;
         private string? _selectedProduct;
+        public string ItemSelected { get; set; }
         public IEnumerable<ProductDto>? FilteredProduct => products?.Where(p =>
         (string.IsNullOrEmpty(_selectedProduct) || p.Name == _selectedProduct) &&
         (_selectedPriceRange == 0 || p.Price <= _selectedPriceRange));
-
-
-
-
-
-
-
-
-
-
-
 
 
         protected override async Task OnInitializedAsync()
@@ -50,10 +40,6 @@ namespace FutureWave.Web.Pages
                     {
                         products = result.Data;
                         SharedState.ProductState = result.Data;
-
-
-
-
                     }
                     else
                     {
@@ -114,12 +100,7 @@ namespace FutureWave.Web.Pages
         {
             try
             {
-
-
-
                 Navigation.NavigateTo($"/edit/{productDto.Id}");
-
-
             }
             catch (Exception ex)
             {
@@ -127,19 +108,14 @@ namespace FutureWave.Web.Pages
             }
         }
 
-
         protected void SelectedRange(decimal range)
         {
             _selectedPriceRange = range;
         }
         protected void SelectedItem(string name)
         {
-            _selectedProduct = name;
-
+            _selectedProduct = ItemSelected = name;
 
         }
-
-
-
     }
 }
