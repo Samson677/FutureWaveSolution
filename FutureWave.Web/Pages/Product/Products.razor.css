@@ -8,7 +8,7 @@ body{
 .item-container {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-gap: 50px;
+    grid-gap: 40px;
     padding-bottom: 20px;
     padding-top: 100px;
     padding-left: 20px;
@@ -24,7 +24,7 @@ body{
     border: 1px solid;
     border-color: rgb(184, 178, 178, 0.53);
     height: 350px;
-    width: 250px;
+    width: 300px;
     border-radius: 20px;
 }
 
@@ -37,7 +37,7 @@ body{
 }
 
     .item-image img {
-        width: 90%;
+        width: 100%;
     }
 
 .item-cart img {

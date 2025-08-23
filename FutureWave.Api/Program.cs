@@ -83,6 +83,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 // Register repositories
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
 
+
 // CORS Configuration
 builder.Services.AddCors(options =>
 {

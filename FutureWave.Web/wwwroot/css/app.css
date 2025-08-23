@@ -101,3 +101,83 @@ a, .btn-link {
 code {
     color: #c02d76;
 }
+
+
+
+
+
+
+
+.item-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-gap: 40px;
+    padding-bottom: 20px;
+    padding-top: 100px;
+    padding-left: 20px;
+}
+
+.item-image:hover {
+    border: 2px solid rgb(184, 178, 178, 0.53);
+}
+
+.item {
+    position: relative;
+    background: white;
+    border: 1px solid;
+    border-color: rgb(184, 178, 178, 0.53);
+    height: 350px;
+    width: 300px;
+    border-radius: 20px;
+}
+
+.item-image {
+    padding: 10px;
+    margin: 10px;
+    height: 220px;
+    border-radius: 20px;
+    background-color: rgb(184, 178, 178, 0.20);
+}
+
+    .item-image img {
+        width: 100%;
+    }
+
+.item-cart img {
+    position: absolute;
+    width: 32px;
+    height: 32px;
+    right: 10px;
+    bottom: 20px;
+}
+
+.item-desc {
+    padding-left: 10px;
+    font-weight: bold;
+}
+
+.item-name {
+    padding-left: 10px;
+    color: #958f8f
+}
+
+.item-qty {
+    padding-left: 10px;
+}
+
+.item-price {
+    padding-left: 10px;
+    color: rgb(76, 166, 37);
+    font-weight: 900;
+}
+
+.item-cart img {
+    background-color: rgb(67, 194, 13, 0.5);
+    padding: 5px;
+    border-radius: 16px;
+    cursor: pointer;
+}
+
+.item:hover {
+    border: 2px solid rgb(184, 178, 178, 0.53);
+}

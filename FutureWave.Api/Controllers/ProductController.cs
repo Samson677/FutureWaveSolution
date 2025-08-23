@@ -16,32 +16,38 @@ namespace FutureWave.Api.Controllers
     public class ProductController : ControllerBase
     {
         private readonly IProductRepository productRepository;
-        private readonly IMapper _mapper;
+        private readonly ILogger<ProductController> _logger;
 
-        public ProductController(IProductRepository productRepository)
+        public ProductController(IProductRepository productRepository, ILogger<ProductController> logger)
         {
             this.productRepository = productRepository;
+            _logger = logger;
 
 
         }
         [HttpGet]
-        public async Task <ActionResult<IEnumerable<ProductDto>>> GetProducts()
+        public async Task<ActionResult<IEnumerable<ProductDto>>> GetProducts()
         {
-
             try
             {
                 var products = await productRepository.GetProducts();
-                return Ok(products);
+
+                if (products == null || !products.Any()) // Check for empty list
+                {
+                    return NoContent(); // 204 No Content
+                }
+
+                return Ok(products); // 200 OK with data
             }
             catch (Exception ex)
             {
+                // Log the error (Assuming you have logging configured)
+                _logger.LogError(ex, "An error occurred while fetching products.");
 
-                return StatusCode(500, $"Internal Server Error: {ex.Message}");
+                return StatusCode(500, "An unexpected error occurred. Please try again later.");
             }
-
-           
-
         }
+
 
         [HttpPost("AddProduct")]
         public async Task<IActionResult> AddProductAsync([FromBody] ProductDto productDto)
@@ -75,24 +81,19 @@ namespace FutureWave.Api.Controllers
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-        [HttpGet("Id")]
-        public async Task<ActionResult<IEnumerable<ProductDto>>> GetProductById([FromBody] ProductDto productDto)
+        [HttpGet("{id}")]
+        public async Task<ActionResult<ProductDto>> GetProductById(int id)
         {
-            var product = await productRepository.GetProductById(productDto.Id);
-            return Ok(product);
+            var product = await productRepository.GetProductById(id);
+
+            if (product == null)
+            {
+                return NotFound(); // Return 404 if the product is not found
+            }
+
+            return Ok(product); // Return 200 with the product data
         }
+
 
 
         [HttpGet("category/{Id}")]
@@ -104,10 +105,10 @@ namespace FutureWave.Api.Controllers
             return Ok(product);
         }
 
-        [HttpDelete("Id")]
-        public async Task<IActionResult> DeleteProduct([FromBody] ProductDto productDto)
+        [HttpDelete("Delete/{id}")]
+        public async Task<IActionResult> DeleteProduct(int id)
         { 
-            var results = await productRepository.DeleteProduct(productDto.Id);
+            var results = await productRepository.DeleteProduct(id);
             return Ok(results);
 
         }
@@ -116,7 +117,7 @@ namespace FutureWave.Api.Controllers
         [HttpPut("Edit")]
         public async Task<IActionResult> EditProduct([FromBody] ProductDto productDto)
         {
-            var results = await productRepository.EditProduct(productDto.Id);
+            var results = await productRepository.EditProduct(productDto);
             return Ok(results);
 
         }

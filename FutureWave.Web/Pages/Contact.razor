@@ -1,0 +1,95 @@
+﻿@page "/Contact"
+@inherits ContactBase
+<Header></Header>
+<div class="container-fluid min-vh-100 d-flex align-items-center justify-content-center">
+    <div class="row w-100">
+
+        <!-- Contact Info Section (Left Side) -->
+        <div class="col-md-8 col-lg-7 p-4">
+            <h2 class="text-primary mb-4 text-center">Contact Us</h2>
+            <div class="info-section mb-4">
+                <div class="mb-3">
+                    <strong>📍 Address:</strong> 2569 Mushitala, Solwezi
+                </div>
+                <div class="mb-3">
+                    <strong>📧 Email:</strong> samsonmumba@gmail.com
+                </div>
+                <div class="mb-3">
+                    <strong>📞 Phone:</strong> +260 964 054627
+                </div>
+                <div class="mb-3">
+                    <strong>🕒 Business Hours:</strong> Mon-Fri: 9 AM - 6 PM
+                </div>
+            </div>
+
+            <!-- Cards Section -->
+            <div class="row mt-4">
+                <div class="col-md-4 col-sm-12 mb-4">
+                    <div class="card shadow-sm rounded-3">
+                        <div class="card-body">
+                            <h5 class="fw-bold">Customer Support</h5>
+                            <p>
+                                Need help with our products or services? Our support team is here to assist you!
+                                Fill out the form with your query, and we’ll get back to you as soon as possible.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-12 mb-4">
+                    <div class="card shadow-sm rounded-3">
+                        <div class="card-body">
+                            <h5 class="fw-bold">Feedback</h5>
+                            <p>
+                                Your opinion matters! We’d love to hear your thoughts on our services, website,
+                                or overall experience. Let us know how we can improve.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-12 mb-4">
+                    <div class="card shadow-sm rounded-3">
+                        <div class="card-body">
+                            <h5 class="fw-bold">Media Inquiries</h5>
+                            <p>
+                                For press and media-related inquiries, please reach out to our communications team.
+                                We're happy to assist with official statements, interviews, or collaborations.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contact Form Section (Right Side) -->
+        <div class="col-md-4 col-lg-5 p-4 bg-light rounded-3 shadow-lg">
+            <h2 class="text-primary mb-4 text-center">Get In Touch</h2>
+            <EditForm Model="@contactDto" OnValidSubmit="SendAsync">
+                <DataAnnotationsValidator></DataAnnotationsValidator>
+                <ValidationSummary></ValidationSummary>
+                <div class="mb-3">
+                    <label class="form-label">Name</label>
+                    <InputText class="form-control" @bind-Value="contactDto.Name"></InputText>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Email</label>
+                    <InputText class="form-control" @bind-Value="contactDto.Email"></InputText>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Phone</label>
+                    <InputText class="form-control" @bind-Value="contactDto.Phone"></InputText>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Address</label>
+                    <InputText class="form-control" @bind-Value="contactDto.Addresss"></InputText>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Message</label>
+                    <InputTextArea class="form-control" @bind-Value="contactDto.Message"></InputTextArea>
+                </div>
+                <button type="submit" class="btn btn-success w-100">Send</button>
+            </EditForm>
+        </div>
+
+    </div>
+</div>
+<Footer></Footer>

@@ -1,42 +1,42 @@
 ﻿using FutureWave.Models.Dtos;
 using FutureWave.Web.Services.Contracts;
 using Microsoft.AspNetCore.Components;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace FutureWave.Web.Pages.Product
 {
     public class ProductsBase : ComponentBase
     {
         [Inject]
-        public IProductService? ProductService { get; set; }
+        public IProductService? ProductService { get; set; } 
 
-        public IEnumerable<ProductDto> Products { get; set; }
+        public IEnumerable<ProductDto>? Products { get; set; }
+        public int ProductCount { get; set; } = 0;
+
         protected override async Task OnInitializedAsync()
         {
             try
             {
-                Products = await ProductService.GetProducts();
-            }
-            catch (Exception)
-            {
+                if (ProductService != null)
+                {
+                    var result = await ProductService.GetProducts();
 
-                throw;
+                    if (result.IsSuccess && result.Data != null)
+                    {
+                        Products = result.Data;
+                        ProductCount = Products.Count();
+                    }
+                    else
+                    {
+                        Console.WriteLine($"Error fetching products: {result.ErrorMessage}");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Unexpected error fetching products: {ex.Message}");
             }
         }
-
-
-
-
-       
-        public string GetImageSrc(byte[] imageData)
-        {
-            if (imageData == null || imageData.Length == 0)
-            {
-                return "/Images/no-image.png"; 
-            }
-            return $"data:image/jpeg;base64,{Convert.ToBase64String(imageData)}";
-        }
-
     }
-
-
 }

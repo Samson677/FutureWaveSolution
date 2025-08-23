@@ -32,7 +32,7 @@ namespace FutureWave.Web.Pages.Auth
             }
             else
             {
-                NavigationManager.NavigateTo("/Login"); 
+                NavigationManager.NavigateTo("/login"); 
             }
         }
     }

@@ -2,6 +2,7 @@ using Blazored.LocalStorage;
 using FutureWave.Web;
 using FutureWave.Web.Services;
 using FutureWave.Web.Services.Contracts;
+using FutureWave.Web.SharedServices;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 
@@ -11,6 +12,9 @@ builder.RootComponents.Add<HeadOutlet>("head::after");
 
 builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri("https://localhost:7193/") });
 builder.Services.AddScoped<IProductService, ProductService>();
+builder.Services.AddScoped<SharedState>();
+
+
 builder.Services.AddScoped<IAuthService, AuthService>();
 
 // Register Blazored LocalStorage

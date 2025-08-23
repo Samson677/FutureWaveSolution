@@ -41,7 +41,7 @@ namespace FutureWave.Web.Pages.Auth
                 // _localStorage.SetItemAsync("authToken", response.Token);
 
                 // Navigate to the Products page after successful login
-                NavigationManager.NavigateTo("/Products");
+                NavigationManager.NavigateTo("/Product");
 
                 return response; // Return the LoginResponseDto containing token and user details
             }

@@ -1,4 +1,5 @@
 ﻿using FutureWave.Api.Entities;
+using FutureWave.Models.Dtos;
 
 namespace FutureWave.Api.Repositories.Contracts
 {
@@ -9,7 +10,7 @@ namespace FutureWave.Api.Repositories.Contracts
         public Task<IEnumerable<ProductCartegory>> GetProductsCartegories();
         public Task<ProductCartegory>  GetProductCartegoryById(int CartegoryId);
         public Task<bool> DeleteProduct(int Id);
-        public Task<Product> EditProduct(int Id);
+        public Task<Product> EditProduct(ProductDto productDto);
         public Task AddProduct(Product product);
     }
 }

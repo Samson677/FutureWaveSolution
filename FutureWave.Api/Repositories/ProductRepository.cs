@@ -1,6 +1,7 @@
 ﻿using FutureWave.Api.Data;
 using FutureWave.Api.Entities;
 using FutureWave.Api.Repositories.Contracts;
+using FutureWave.Models.Dtos;
 using Microsoft.EntityFrameworkCore;
 
 namespace FutureWave.Api.Repositories
@@ -33,18 +34,44 @@ namespace FutureWave.Api.Repositories
             return true;
         }
 
-        public async Task<Product> EditProduct(int Id)
+        public async Task<Product> EditProduct(ProductDto updatedProduct)
         {
-            var product = await futureWaveDbContext.Products.FindAsync(Id);
+            var product = await futureWaveDbContext.Products.FindAsync(updatedProduct.Id);
+
+            if (product == null)
+            {
+                throw new Exception("Product not found.");
+            }
+
+            // Update product properties
+            product.Name = updatedProduct.Name;
+            product.Price = updatedProduct.Price;
+            product.Qty = updatedProduct.Qty;
+            product.CategoryName = updatedProduct.CategoryName;
+            product.Description = updatedProduct.Description;
+           
+
+            // Save changes to the database
+            await futureWaveDbContext.SaveChangesAsync();
+
             return product;
         }
+
+
 
         public async Task<Product> GetProductById(int Id)
         {
             var product = await this.futureWaveDbContext.Products.FindAsync(Id);
 
+            if (product == null)
+            {
+                // Handle the case where the product is not found
+                throw new KeyNotFoundException($"Product with ID {Id} not found.");
+            }
+
             return product;
         }
+
 
         public async Task<ProductCartegory> GetProductCartegoryById(int CartegoryId)
         {
@@ -52,13 +79,14 @@ namespace FutureWave.Api.Repositories
 
             return productCartegory;
         }
-
         public async Task<IEnumerable<Product>> GetProducts()
         {
-           var products = await this.futureWaveDbContext.Products.ToListAsync();
-
-            return products;
+            return await futureWaveDbContext.Products
+                                            .AsNoTracking()
+                                            .ToListAsync();
         }
+
+
 
         public async Task<IEnumerable<ProductCartegory>> GetProductsCartegories()
         {

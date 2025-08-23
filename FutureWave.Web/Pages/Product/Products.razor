@@ -1,5 +1,6 @@
-﻿@page "/Products"
+﻿@page "/Product"
 @inherits ProductsBase
+@inject IProductService productService
 <Header></Header>
 
 @if (Products == null)
@@ -7,13 +8,15 @@
     <h2>Loading...</h2>
 }
 else
+
+
 {
     <div class="item-container">
         @foreach (var product in Products)
         {
             <div class="item">
                 <div class="item-image">
-                    <img src="@GetImageSrc(product.Image)" alt="@product.Name" />
+                    <img src="@productService.GetImageSrc(product.Image)" alt="@product.Name" />
                 </div>
                 <div class="item-name">@product.Name</div>
                 <div class="item-desc">@product.Description</div>

@@ -1,1 +1,147 @@
 ﻿@page "/Home"
+@inherits ProductsBase
+@inject IProductService productService
+<Header></Header>
+<div class="container-fluid min-vh-100 mb-5 bg-light position-relative" style="background-image: url(''); background-size: cover; background-position: center;">
+    <!-- Hero Section -->
+    <div class="row align-items-center text-center text-md-start mb-5"
+    style="background: url('/images/background.jpg') no-repeat center center;
+            background-size: cover;
+            width: 100%;
+            padding: 80px 0;"
+    >
+        <div class="col-md-6 bg-light-gray">
+           
+            <h1 class="fw-bold text-primary"> FutureWave Electronics</h1>
+            <p class="text-danger fs-3 fs-md-2 fs-lg-3 ">Get high-quality electronic components, expert consultation, and <br /> custom-built projects tailored to your needs.</p>
+            <a href="/shop" class="btn btn-primary btn-lg mt-3">Shop Now</a>
+            <a href="/contact" class="btn btn-outline-secondary btn-lg mt-3">Get a Quote</a>
+        </div>
+     
+    </div>
+
+
+    <!-- Categories Section -->
+    <div class="text-center mb-5">
+        <h2 class="text-secondary">What We Offer</h2>
+        <div class="row mt-4">
+            <div class="col-md-4">
+                <div class="card shadow-sm p-4">
+                    <h5 class="fw-bold">Electronic Components</h5>
+                    <p>Find microcontrollers, sensors, power modules, and more.</p>
+                    <a href="/shop?category=components" class="btn btn-sm btn-primary">Browse</a>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card shadow-sm p-4">
+                    <h5 class="fw-bold">Consultation Services</h5>
+                    <p>Get expert guidance on hardware and software solutions.</p>
+                    <a href="/contact" class="btn btn-sm btn-primary">Contact Us</a>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card shadow-sm p-4">
+                    <h5 class="fw-bold">Custom Projects</h5>
+                    <p>We build from scratch – IoT, automation, robotics, and more.</p>
+                    <a href="/projects" class="btn btn-sm btn-primary">View Projects</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Featured Products Section -->
+    @if (Products == null)
+    {
+        <h2>Loading...</h2>
+    }
+    else
+    { 
+
+        <div class="item-container">
+           
+            @foreach (var product in Products)
+            {
+                @if (ProductCount < 4)
+                {
+                    <div class="item">
+                        <div class="item-image">
+                            <img src="@productService.GetImageSrc(product.Image)" alt="@product.Name" />
+                    </div>
+                    <div class="item-name">@product.Name</div>
+                    <div class="item-desc">@product.Description</div>
+                    <div class="item-qty">Remaining: @product.Qty</div>
+                    <div class="item-price">K @product.Price</div>
+                    <div class="item-cart">
+                        <img src="/Images/cart.png" alt="Cart" />
+                    </div>
+                </div>
+                    ProductCount++;
+                    }
+            }
+        </div>
+
+        
+    }
+
+    <!-- Why Choose Us -->
+    <div class="text-center mb-5">
+        <h2 class="text-secondary">Why Choose Us?</h2>
+        <div class="row mt-3">
+            <div class="col-md-4">
+                <div class="card shadow-sm p-4">
+                    <h5 class="fw-bold">Expertise</h5>
+                    <p>We have years of experience in electronics and software development.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card shadow-sm p-4">
+                    <h5 class="fw-bold">Affordable Prices</h5>
+                    <p>We offer competitive pricing on all our products and services.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card shadow-sm p-4">
+                    <h5 class="fw-bold">Customer Satisfaction</h5>
+                    <p>We prioritize quality and customer service to meet your needs.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Testimonials -->
+    <div class="text-center mb-5">
+        <h2 class="text-secondary">What Our Customers Say</h2>
+        <div class="row mt-4">
+            <div class="col-md-4">
+                <div class="card shadow-sm p-4">
+                    <p>"Great service! Helped me build my IoT project successfully."</p>
+                    <h6>- John Doe</h6>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card shadow-sm p-4">
+                    <p>"High-quality components and fast delivery. Highly recommended!"</p>
+                    <h6>- Sarah K.</h6>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card shadow-sm p-4">
+                    <p>"Samson provided excellent consultation for my startup."</p>
+                    <h6>- David M.</h6>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Call to Action -->
+    <div class="text-center mt-5">
+        <h2 class="text-secondary">Ready to Get Started?</h2>
+        <p>Browse our store or reach out for consultation.</p>
+        <a href="/shop" class="btn btn-success">Shop Now</a>
+        <a href="/contact" class="btn btn-outline-secondary">Contact Us</a>
+    </div>
+
+</div>
+
+
+<Footer></Footer>
