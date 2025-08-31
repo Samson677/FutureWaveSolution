@@ -13,31 +13,9 @@
 <!-- Main Layout -->
 <div class="container-fluid">
 
-    <div class="row mt-5">
+    <div class="row">
         <!-- Sidebar -->
-        <div class="col-md-2 vh-100 p-3 position-fixed d-flex flex-column justify-content-between " style="background-color:lightgrey;">
-
-            <ul class="nav flex-column">
-                <li class="nav-item mb-1">
-                    <NavLink class="nav-link text-black btn btn-outline-secondary" href="/Dashboard" Match="NavLinkMatch.All">Dashboard</NavLink>
-                </li>
-                <li class="nav-item mb-1">
-                    <NavLink class="nav-link text-black btn btn-outline-secondary" href="/user">User Management</NavLink>
-                </li>
-                <li class="nav-item mb-1">
-                    <NavLink class="nav-link text-black btn btn-outline-secondary" href="/store">Store Management</NavLink>
-                </li>
-                <li class="nav-item mb-1">
-                    <NavLink class="nav-link text-black btn btn-outline-secondary" href="/Price Management">Price Management</NavLink>
-                </li>
-            </ul>
-
-
-            <div>
-                <NavLink class="btn btn-outline-danger w-100 mb-5" href="/logout">Logout</NavLink>
-            </div>
-
-        </div>
+        <SideBar></SideBar>
 
         <!-- Main Content -->
         <div class="col-md-10 offset-md-2 p-4 mt-5">

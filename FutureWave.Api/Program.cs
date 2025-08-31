@@ -1,4 +1,5 @@
 using FutureWave.Api.Data;
+using FutureWave.Api.Entities.Identity;
 using FutureWave.Api.Repositories;
 using FutureWave.Api.Repositories.Contracts;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -50,7 +51,7 @@ builder.Services.AddDbContextPool<IdentityUserDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("IdentityConnection")));
 
 // Configure Identity
-builder.Services.AddIdentity<IdentityUser, IdentityRole>()
+builder.Services.AddIdentity<User, Role>()
     .AddEntityFrameworkStores<IdentityUserDbContext>()
     .AddDefaultTokenProviders();
 
