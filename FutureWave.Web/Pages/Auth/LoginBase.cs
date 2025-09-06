@@ -6,16 +6,16 @@ using System.Net.Http;
 namespace FutureWave.Web.Pages.Auth
 {
 
-    
-    public class LoginBase: ComponentBase
+
+    public class LoginBase : ComponentBase
     {
         [Inject]
         IAuthService AuthService { get; set; }
 
         [Inject]
-          NavigationManager NavigationManager { get; set; }
+        NavigationManager NavigationManager { get; set; }
 
-       public LoginDto loginDto = new LoginDto();
+        public LoginDto loginDto = new LoginDto();
         public bool isLoading = false;
         public bool loginError = false;
 
@@ -37,10 +37,7 @@ namespace FutureWave.Web.Pages.Auth
             }
             else
             {
-                // Optionally store the token (e.g., in localStorage or sessionStorage)
-                // _localStorage.SetItemAsync("authToken", response.Token);
 
-                // Navigate to the Products page after successful login
                 NavigationManager.NavigateTo("/Product");
 
                 return response; // Return the LoginResponseDto containing token and user details

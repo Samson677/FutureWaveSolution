@@ -5,12 +5,12 @@ using Microsoft.AspNetCore.Components;
 
 namespace FutureWave.Web.Pages.Auth
 {
-    public class RegisterBase: ComponentBase
+    public class RegisterBase : ComponentBase
     {
 
         [Inject]
         NavigationManager NavigationManager { get; set; }
-        [Inject ] IAuthService authService { get; set; }
+        [Inject] IAuthService authService { get; set; }
 
         public bool isLoading = false;
         public bool registerError = false;
@@ -28,11 +28,11 @@ namespace FutureWave.Web.Pages.Auth
 
             if (response == null)
             {
-                registerError = true; 
+                registerError = true;
             }
             else
             {
-                NavigationManager.NavigateTo("/login"); 
+                NavigationManager.NavigateTo("/");
             }
         }
     }
