@@ -8,7 +8,7 @@ using System.Net.Http.Headers;
 
 namespace FutureWave.Web.Services
 {
-    public class AuthService: IAuthService
+    public class AuthService : IAuthService
     {
         private readonly HttpClient httpClient;
         private readonly ILocalStorageService _localStorage;
@@ -18,7 +18,7 @@ namespace FutureWave.Web.Services
         public AuthService(HttpClient httpClient, ILocalStorageService localStorage)
         {
             this.httpClient = httpClient;
-                 _localStorage = localStorage;
+            _localStorage = localStorage;
         }
         public async Task<LoginResponseDto> LoginAsync(LoginDto loginDto)
         {
@@ -32,8 +32,8 @@ namespace FutureWave.Web.Services
                     if (loginResponse != null)
                     {
 
-                        await _localStorage.SetItemAsync("authToken", loginResponse.Token); 
-                        await _localStorage.SetItemAsync("email", loginResponse.Email); 
+                        await _localStorage.SetItemAsync("authToken", loginResponse.Token);
+                        await _localStorage.SetItemAsync("email", loginResponse.Email);
                         await _localStorage.SetItemAsync("role", loginResponse.Roles);
                         httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", loginResponse.Token);
 
@@ -43,15 +43,12 @@ namespace FutureWave.Web.Services
             }
             catch (Exception)
             {
-           
+
             }
 
-      
+
             return null;
         }
-
-
-
 
         public async Task<bool> RegisterAsync(RegisterDto registerDto)
         {
@@ -78,7 +75,7 @@ namespace FutureWave.Web.Services
         }
     }
 
-   
+
 
 }
 

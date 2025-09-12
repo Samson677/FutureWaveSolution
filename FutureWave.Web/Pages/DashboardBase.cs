@@ -25,7 +25,7 @@ namespace FutureWave.Web.Pages
         private decimal _selectedPriceRange = 0;
         public decimal SelectedPriceRange { get; set; }
         private string? _selectedProduct;
-        public string SelectedProduct { get; set; }
+        public string? SelectedProduct { get; set; }
         public IEnumerable<ProductDto>? FilteredProduct => products?.Where(p =>
         (string.IsNullOrEmpty(_selectedProduct) || p.Name == _selectedProduct) &&
         (_selectedPriceRange == 0 || p.Price <= _selectedPriceRange));

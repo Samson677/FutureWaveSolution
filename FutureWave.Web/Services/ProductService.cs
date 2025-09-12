@@ -47,11 +47,11 @@ namespace FutureWave.Web.Services
             {
                 var response = await httpClient.DeleteAsync($"Api/Product/Delete/{id}");
 
-                return response.IsSuccessStatusCode; // ✅ Return success status
+                return response.IsSuccessStatusCode;
             }
             catch
             {
-                return false; // ✅ Indicate failure instead of throwing
+                return false;
             }
         }
 

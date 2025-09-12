@@ -4,6 +4,7 @@ using FutureWave.Api.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FutureWave.Api.Migrations
 {
     [DbContext(typeof(FutureWaveDbContext))]
-    partial class FutureWaveDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250912073016_AddedACreatedAtDate")]
+    partial class AddedACreatedAtDate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

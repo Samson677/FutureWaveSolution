@@ -17,10 +17,10 @@ namespace FutureWave.Api.Repositories
 
         public async Task AddProduct(Product product)
         {
-       
+
             await futureWaveDbContext.Products.AddAsync(product);
 
-     
+
             await futureWaveDbContext.SaveChangesAsync();
         }
 
@@ -49,7 +49,7 @@ namespace FutureWave.Api.Repositories
             product.Qty = updatedProduct.Qty;
             product.CategoryName = updatedProduct.CategoryName;
             product.Description = updatedProduct.Description;
-           
+
 
             // Save changes to the database
             await futureWaveDbContext.SaveChangesAsync();
@@ -86,11 +86,9 @@ namespace FutureWave.Api.Repositories
                                             .ToListAsync();
         }
 
-
-
         public async Task<IEnumerable<ProductCartegory>> GetProductsCartegories()
         {
-           var Cartegories = await this.futureWaveDbContext.ProductCartegories.ToListAsync();
+            var Cartegories = await this.futureWaveDbContext.ProductCartegories.ToListAsync();
 
             return Cartegories;
         }
